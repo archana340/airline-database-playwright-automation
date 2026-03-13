@@ -24,7 +24,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'dotnet run --project AirlinedatabaseSystem.csproj',
+    command: 'dotnet run --project ./AirlinedatabaseSystem-master/AirlinedatabaseSystem.csproj',
     url: 'https://localhost:7291',
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
