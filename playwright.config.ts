@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: 'html',
 
   use: {
-    baseURL: 'https://localhost:7291',
+    baseURL: 'http://127.0.0.1:7291',
     headless: !!process.env.CI,
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
@@ -24,9 +24,9 @@ export default defineConfig({
   ],
 
   webServer: {
-  command: 'dotnet run --project AirlinedatabaseSystem-master/AirlinedatabaseSystem.csproj',
-  url: 'https://localhost:7291',
-  reuseExistingServer: !process.env.CI,
-  timeout: 120000,
-},
+    command: 'dotnet run --project AirlinedatabaseSystem-master/AirlinedatabaseSystem.csproj --urls http://127.0.0.1:7291',
+    url: 'http://127.0.0.1:7291',
+    reuseExistingServer: !process.env.CI,
+    timeout: 180000,
+  },
 });
