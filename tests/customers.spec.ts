@@ -1,27 +1,49 @@
-import { test } from '@playwright/test';
-import { AdminLoginPage } from '../pages/AdminLoginPage';
-import { CustomersPage } from '../pages/CustomersPage';
+import { Page, Locator, expect } from '@playwright/test';
 
-test('Admin can add a customer', async ({ page }) => {
-  const loginPage = new AdminLoginPage(page);
-  const customersPage = new CustomersPage(page);
+export class CustomersPage {
+  readonly page: Page;
+  readonly newCustomerButton: Locator;
+  readonly firstNameInput: Locator;
+  readonly lastNameInput: Locator;
+  readonly emailInput: Locator;
+  readonly phoneInput: Locator;
+  readonly submitButton: Locator;
+  readonly customersTable: Locator;
 
-  const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  const unique = `${today}${Math.floor(Math.random() * 10000)}`;
-  const email = `archana${unique}@gmail.com`;
+  constructor(page: Page) {
+    this.page = page;
+    this.newCustomerButton = page.getByRole('link', { name: 'New Customer' });
+    this.firstNameInput = page.getByLabel('First Name');
+    this.lastNameInput = page.getByLabel('Last Name');
+    this.emailInput = page.getByLabel('Email');
+    this.phoneInput = page.getByLabel('Phone Number');
+    this.submitButton = page.getByRole('button', { name: 'Submit' });
+    this.customersTable = page.locator('table');
+  }
 
-  await loginPage.navigate();
-  await loginPage.login('archana', 'Admin123');
+  async openCustomersPage() {
+    await this.page.goto('/Customers/Customers');
+    await expect(this.page).toHaveURL(/Customers\/Customers/);
+  }
 
-  await customersPage.openCustomersPage();
-  await customersPage.clickNewCustomer();
+  async clickNewCustomer() {
+    await this.newCustomerButton.click();
+    await expect(this.page).toHaveURL(/Customers\/Create/);
+  }
 
-  await customersPage.addCustomer(
-    'Archana',
-    'Reddy',
-    email,
-    '9876543210'
-  );
+  async addCustomer(firstName: string, lastName: string, email: string, phone: string) {
+    await this.firstNameInput.fill(firstName);
+    await this.lastNameInput.fill(lastName);
+    await this.emailInput.fill(email);
+    await this.phoneInput.fill(phone);
 
-  await customersPage.verifyCustomerListed(email);
-});
+    await this.submitButton.click();
+    await this.page.waitForLoadState('domcontentloaded');
+  }
+
+  async verifyCustomerListed(email: string) {
+    await this.page.goto('/Customers/Customers');
+    await expect(this.customersTable).toBeVisible();
+    await expect(this.customersTable).toContainText(email);
+  }
+}
