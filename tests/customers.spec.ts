@@ -6,9 +6,9 @@ test('Admin can add a customer', async ({ page }) => {
   const loginPage = new AdminLoginPage(page);
   const customersPage = new CustomersPage(page);
 
-  // Generate short email based on today's date
-  const today = new Date().toISOString().slice(0,10).replace(/-/g, '');
-  const email = `archana${today}@gmail.com`;
+  const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  const unique = `${today}${Math.floor(Math.random() * 10000)}`;
+  const email = `archana${unique}@gmail.com`;
 
   await loginPage.navigate();
   await loginPage.login('archana', 'Admin123');
