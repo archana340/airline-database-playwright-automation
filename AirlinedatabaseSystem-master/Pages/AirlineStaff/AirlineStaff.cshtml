@@ -1,0 +1,35 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.AirlineStaff.AirlineStaffModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airline Staff Details</title>
+    <link href="~/css/customers.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-airports">
+
+    <h2>Displaying the Airline Staff Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Staff ID</th>
+                <th>Staff Name</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var staff in Model.listStaff)
+            {
+                <tr>
+                    <td>@staff.StaffId</td>
+                    <td>@staff.StaffName</td>
+                    <td>@staff.Role</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

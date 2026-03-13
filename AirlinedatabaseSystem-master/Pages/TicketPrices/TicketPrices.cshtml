@@ -1,0 +1,39 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.TicketPrices.TicketPricesModel
+@{
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket Prices</title>
+    <link href="~/css/customers.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-airports">
+   
+        <h2>Ticket Prices</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Price ID</th>
+                    <th>Flight ID</th>
+                    <th>Class</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ticketPrice in Model.listTicketPrices)
+                {
+                    <tr>
+                        <td>@ticketPrice.PriceId</td>
+                        <td>@ticketPrice.FlightId</td>
+                        <td>@ticketPrice.Class</td>
+                        <td>@ticketPrice.Price</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+   
+</body>
+</html>

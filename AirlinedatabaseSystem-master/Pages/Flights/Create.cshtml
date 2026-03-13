@@ -1,0 +1,45 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Flights.CreateModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Flight</title>
+    <link href="~/css/flights.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Create New Flight</h2>
+    @if (!string.IsNullOrEmpty(Model.errormessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.errormessage
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.successMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.successMessage
+        </div>
+    }
+    <form method="post" class="flight-form">
+        <div class="form-group">
+            <label for="FlightNumber">Flight Number:</label>
+            <input type="text" id="FlightNumber" name="FlightNumber" class="form-control" value="@Model.flightInfo.flight_number" />
+        </div>
+        <div class="form-group">
+            <label for="DepartureAirportCode">Departure Airport Code:</label>
+            <input type="text" id="DepartureAirportCode" name="DepartureAirportCode" class="form-control" value="@Model.flightInfo.Departure_airport_code" />
+        </div>
+        <div class="form-group">
+            <label for="DepartureTime">Departure Time:</label>
+            <input type="text" id="DepartureTime" name="DepartureTime" class="form-control" value="@Model.flightInfo.Departure_time.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+        <div class="form-group">
+            <label for="ArrivalTime">Arrival Time:</label>
+            <input type="text" id="ArrivalTime" name="ArrivalTime" class="form-control" value="@Model.flightInfo.Arrival_time.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</body>
+</html>

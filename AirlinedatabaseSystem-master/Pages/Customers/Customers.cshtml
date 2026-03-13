@@ -1,0 +1,46 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Customers.CustomersModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Details</title>
+    <link href="~/css/customers.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-customers">
+
+    <h2>Displaying the customer details</h2>
+    <a class="btn btn-primary btn-sm" href="/Customers/Create">New Customer</a>
+
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listCustomers)
+                {
+                    <tr>
+                        <td>@item.customer_id</td>
+                        <td>@item.First_name</td>
+                        <td>@item.Last_name</td>
+                        <td>@item.email</td>
+                        <td>@item.Phone_number</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="/Customers/Edit?id=@item.customer_id">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="/Customers/Delete?id=@item.customer_id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

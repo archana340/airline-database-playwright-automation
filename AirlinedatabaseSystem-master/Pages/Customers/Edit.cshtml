@@ -1,0 +1,48 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Customers.EditModel
+@{
+}
+
+<h2>Editing Customer Information</h2>
+
+@if (!string.IsNullOrEmpty(Model.errorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.errorMessage
+    </div>
+}
+
+<form method="post">
+    <input type="hidden" asp-for="customerinfo.customer_id" />
+
+    <div class="form-group">
+        <label asp-for="customerinfo.First_name"></label>
+        <input asp-for="customerinfo.First_name" class="form-control" />
+        <span asp-validation-for="customerinfo.First_name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="customerinfo.Last_name"></label>
+        <input asp-for="customerinfo.Last_name" class="form-control" />
+        <span asp-validation-for="customerinfo.Last_name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="customerinfo.email"></label>
+        <input asp-for="customerinfo.email" class="form-control" />
+        <span asp-validation-for="customerinfo.email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="customerinfo.Phone_number"></label>
+        <input asp-for="customerinfo.Phone_number" class="form-control" />
+        <span asp-validation-for="customerinfo.Phone_number" class="text-danger"></span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.successMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.successMessage
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/Customers/Customers" class="btn btn-secondary">Cancel</a>
+</form>

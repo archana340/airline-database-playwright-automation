@@ -1,0 +1,37 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.payments.paymentsModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payments</title>
+    <link href="~/css/customers.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-payments">
+    
+        <h2>Payments</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Reservation ID</th>
+                    <th>Amount</th>
+                    <th>Payment Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var payment in Model.listPayments)
+                {
+                    <tr>
+                        <td>@payment.PaymentId</td>
+                        <td>@payment.ReservationId</td>
+                        <td>@payment.Amount</td>
+                        <td>@payment.PaymentDate.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    
+</body>
+</html>

@@ -1,0 +1,130 @@
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AirlinedatabaseSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AirlinedatabaseSystem.styles.css" asp-append-version="true" />
+
+    <style>
+        .navbar-brand {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 24px;
+        }
+
+            .navbar-brand:hover {
+                font-weight: normal;
+            }
+
+        .left-pane {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+            .main-content.with-sidebar {
+                margin-left: 200px;
+            }
+
+        .nav-link {
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+
+            .nav-link:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+            .nav-link.active {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: gainsboro;
+            color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    @{
+        var isLoggedIn = Context.Session.GetString("AdminLoggedIn") == "true";
+        var currentPath = Context.Request.Path.Value ?? "";
+        var isLoginPage = currentPath.Equals("/Admin/AdminLogin", StringComparison.OrdinalIgnoreCase);
+    }
+
+    @if (isLoggedIn && !isLoginPage)
+    {
+        <div class="left-pane">
+            <nav class="nav flex-column">
+                <a class="nav-link" asp-page="/Index">Home</a>
+                <a class="nav-link" asp-page="/Privacy">Privacy</a>
+                <a class="nav-link" asp-page="/Customers/Customers">Customers</a>
+                <a class="nav-link" asp-page="/Flights/Flights">Flights</a>
+                <a class="nav-link" asp-page="/Aircrafts/Aircrafts">Aircrafts</a>
+                <a class="nav-link" asp-page="/Reservations/Reservations">Reservations</a>
+                <a class="nav-link" asp-page="/Airports/Airports">Airports</a>
+                <a class="nav-link" asp-page="/airport_gates/airport_gates">Airport Gates</a>
+                <a class="nav-link" asp-page="/payments/payments">Payments</a>
+                <a class="nav-link" asp-page="/TicketPrices/TicketPrices">Ticket Prices</a>
+                <a class="nav-link" asp-page="/AirlineStaff/AirlineStaff">Airline Staff</a>
+                <a class="nav-link" asp-page="/SpecialServices/SpecialServices">Special Services</a>
+                <a class="nav-link" asp-page="/Luggage/Luggage">Luggage</a>
+            </nav>
+        </div>
+    }
+
+    <div class="main-content @((isLoggedIn && !isLoginPage) ? "with-sidebar" : "")">
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-page="@(isLoggedIn && !isLoginPage ? "/Index" : "/Admin/AdminLogin")">
+                        AirlinedatabaseSystem
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2024 - AirlinedatabaseSystem - <a asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

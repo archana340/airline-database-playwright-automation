@@ -1,0 +1,47 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Flights.FlightsModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Details</title>
+    <link href="~/css/customers.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-flights">
+   
+        <h2>Displaying the flight details</h2>
+        <a class='btn btn-primary btn-sm' href='/Flights/Create'>New Flight</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Flight Number</th>
+                    <th>Departure Airport Code</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>AircraftID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listFlights)
+                {
+                    <tr>
+                        <td>@item.flight_id</td>
+                        <td>@item.flight_number</td>
+                        <td>@item.Departure_airport_code</td>
+                        <td>@item.Departure_time</td>
+                        <td>@item.Arrival_time</td>
+                        <td>@item.aircraft_id</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="/Flights/Edit?id=@item.flight_id">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="/Flights/Delete?id=@item.flight_id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    
+</body>
+</html>

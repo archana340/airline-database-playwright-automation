@@ -1,0 +1,90 @@
+﻿.bg-customers {
+    background: linear-gradient(90deg, rgba(238,237,174,1) 0%, rgba(148,233,219,0.6671918767507004) 100%);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-flights {
+    background: #F8CCC3;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-aircrafts {
+    background: #D6EAF8;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-reservations {
+    background: linear-gradient(90deg, #A9F1DF, #FFBBBB);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-airports {
+    background: #d3e7f1;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-airportgates {
+    background: radial-gradient(circle, rgba(255,236,210,1) 0%, rgba(252,182,159,0.5887605042016807) 100%);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-payments {
+    background: #D7BDE2;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.bg-prices {
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,0.3534663865546218) 50%, rgba(252,176,69,1) 100%);
+    min-height: 100vh;
+    width: 100%;
+}
+
+h1 {
+    font-family: Arial;
+    font-size: 50px;
+    text-align: center;
+    color: black;
+}
+
+h2 {
+    font-family: Georgia;
+    font-style: oblique;
+    font-size: 30px;
+    text-align: left;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px dashed rgba(0,0,255,0.5);
+    margin-top: 20px;
+    border-spacing: 0;
+    table-layout: auto;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+    /* Email column */
+    th:nth-child(4),
+    td:nth-child(4) {
+        text-align: left;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    /* Phone column */
+    td:nth-child(5) {
+        white-space: nowrap;
+    }

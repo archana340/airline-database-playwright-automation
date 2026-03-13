@@ -1,0 +1,42 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Reservations.ReservationsModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation Details</title>
+    <link href="~/css/customers.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-reservations">
+   
+        <h2>Displaying the reservation details</h2>
+    <a class='btn btn-primary btn-sm' href='/Reservations/Create'>New Reservation</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer ID</th>
+                    <th>Flight ID</th>
+                    <th>Seat Number</th>
+                    <th>Booking Date</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listReservations)
+                {
+                    <tr>
+                        <td>@item.ReservationId</td>
+                        <td>@item.CustomerId</td>
+                        <td>@item.FlightId</td>
+                        <td>@item.SeatNumber</td>
+                        <td>@item.BookingDate</td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+       
+  
+</body>
+</html>

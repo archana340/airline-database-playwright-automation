@@ -1,0 +1,27 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.SpecialServices.SpecialServicesModel
+@{
+    ViewData["Title"] = "Special Services";
+}
+
+<h2>Special Services</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Service ID</th>
+            <th>Reservation ID</th>
+            <th>Service Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model.SpecialServices)
+        {
+            <tr>
+                <td>@service.ServiceID</td>
+                <td>@service.reservation_id</td>
+                <td>@service.ServiceType</td>
+            </tr>
+        }
+    </tbody>
+</table>

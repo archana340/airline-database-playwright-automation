@@ -1,0 +1,36 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Airports.AirportsModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Airport Details</title>
+    <link href="~/css/customers.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-airports">
+    <div class="container">
+        <h2>Displaying the airport details</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Airport Code</th>
+                    <th>Airport Name</th>
+                    <th>City</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var airport in Model.listAirports)
+                {
+                    <tr>
+                        <td>@airport.AirportCode</td>
+                        <td>@airport.AirportName</td>
+                        <td>@airport.City</td>
+                        <td>@airport.Country</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

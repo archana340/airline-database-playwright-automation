@@ -1,0 +1,42 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Aircrafts.AircraftsModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aircraft Details</title>
+    <link href="~/css/customers.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-aircrafts">
+    
+        <h2>Displaying the aircraft details</h2>
+        <a class='btn btn-primary btn-sm' href='/Aircrafts/Create'>New Aircraft</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Aircraft Name</th>
+                    <th>Capacity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listAircrafts)
+                {
+                    <tr>
+                        <td>@item.AircraftId</td>
+                        <td>@item.AircraftName</td>
+                        <td>@item.Capacity</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="/Aircrafts/Edit?id=@item.AircraftId">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="/Aircrafts/Delete?id=@item.AircraftId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+</body>
+</html>

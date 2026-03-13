@@ -1,0 +1,54 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Flights.EditModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Flight</title>
+    <link href="~/css/edit.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Editing Flight Information</h2>
+
+    @if (!string.IsNullOrEmpty(Model.errorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.errorMessage
+        </div>
+    }
+
+    <form method="post">
+        <input type="hidden" asp-for="flightInfo.flight_id" />
+
+        <div class="form-group">
+            <label asp-for="flightInfo.flight_number"></label>
+            <input asp-for="flightInfo.flight_number" class="form-control" />
+            <span asp-validation-for="flightInfo.flight_number" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="flightInfo.Departure_airport_code"></label>
+            <input asp-for="flightInfo.Departure_airport_code" class="form-control" />
+            <span asp-validation-for="flightInfo.Departure_airport_code" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="flightInfo.Departure_time"></label>
+            <input asp-for="flightInfo.Departure_time" class="form-control" />
+            <span asp-validation-for="flightInfo.Departure_time" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="flightInfo.Arrival_time"></label>
+            <input asp-for="flightInfo.Arrival_time" class="form-control" />
+            <span asp-validation-for="flightInfo.Arrival_time" class="text-danger"></span>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.successMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                @Model.successMessage
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/Flights/Flights" class="btn btn-secondary">Cancel</a>
+    </form>
+</body>
+</html>

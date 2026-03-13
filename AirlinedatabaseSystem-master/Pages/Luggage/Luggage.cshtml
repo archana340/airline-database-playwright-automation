@@ -1,0 +1,34 @@
+﻿@page
+@model AirlinedatabaseSystem.Pages.Luggage.LuggageModel
+@{
+    ViewData["Title"] = "Luggage Information";
+}
+
+<h2>Luggage Information</h2>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Luggage ID</th>
+            <th>Reservation ID</th>
+            <th>Weight (kg)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var luggage in Model.LuggageList)
+        {
+            <tr>
+                <td>@luggage.LuggageId</td>
+                <td>@luggage.ReservationId</td>
+                <td>@luggage.Weight</td>
+            </tr>
+        }
+    </tbody>
+</table>
