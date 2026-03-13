@@ -14,8 +14,7 @@ test('Admin should login successfully', async ({ page }) => {
   await loginPage.login('archana', 'Admin123');
 
   // Verify homepage loaded
-  await expect(page).toHaveURL('https://localhost:7291/');
-
+  await expect(page).toHaveURL('http://127.0.0.1:7291/');
   await homePage.verifyHomePageLoaded();
 
 });
