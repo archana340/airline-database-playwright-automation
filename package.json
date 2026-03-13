@@ -1,0 +1,26 @@
+{
+  "name": "airline-database-system-playwright-automation",
+  "version": "1.0.0",
+  "description": "Playwright TypeScript Automation Framework for Airline Database Management System",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "typescript",
+    "ui-testing",
+    "qa"
+  ],
+  "author": "Archana Puppireddy",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0"
+  }
+}
